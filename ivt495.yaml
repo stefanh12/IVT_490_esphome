@@ -1,0 +1,254 @@
+substitutions:
+  ssid: !secret wifi__iot2_ssid
+  ssidpassword: !secret wifi_iot2_password
+  apipassword: !secret api_password
+  otapassword: !secret ota_password
+  friendly_name: ivt495
+
+esphome:
+  name: ivt495
+  platform: ESP8266
+  board: d1_mini_pro
+  includes: 
+    - my_custom_ivt_reader.h
+wifi:
+  ssid: ${ssid}
+  password: ${ssidpassword}
+#  use_address: sonoff_rf_bridge.local
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "ivt495"
+    password: "123456789"
+
+captive_portal:
+
+# Enable logging
+logger:
+  baud_rate: 0
+# Enable Home Assistant API
+api:
+  password: ${apipassword}
+ 
+ota:
+  password: ${otapassword}
+  
+# UART settings for IVT RX connection (required)
+uart:
+  id: uart_bus
+  tx_pin: D6         # not used, do not connect
+  rx_pin: D5         # hardware dependant
+  rx_buffer_size: 512
+  baud_rate: 9600
+  debug:
+    direction: BOTH
+    after:
+      timeout: 30s
+    sequence:
+     - lambda: UARTDebug::log_string(direction, bytes);
+  
+
+sensor:
+  - platform: template
+    id: ivtFramledning
+    name: "ivt framlednings temp"
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+  - name: "ivt Ute temp"
+    platform: template
+    id: ivtUte
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+  
+  - name: "ivt Tappvarmvatten Topp temp"
+    platform: template
+    id: ivtTappvarmvattenTopp
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+
+  - name: "ivt Varmvatten Mitt temp"
+    platform: template
+    id: ivtVarmvattenMitt
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+ 
+
+  - name: "ivt Varmevatten Botten temp"
+    platform: template
+    id: ivtVarmevattenBotten
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+    
+  - name: "ivt Rums temp"
+    platform: template
+    id: ivtRumstemp
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+
+  - name: "ivtHetgas  temp"
+    platform: template
+    id: ivtHetgas
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+
+  - name: "ivt Extra Acc-Tank temp"
+    platform: template
+    id: ivtExtraAccTank
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+
+  - name: "ivt Tryckvakt"
+    platform: template
+    id: ivtTryckvakt
+    lambda: "return {};"
+
+  - name: "ivt Högtryck"
+    platform: template
+    id: ivtHogtryck
+    lambda: "return {};"
+
+  - name: "ivt Lågtryck"
+    platform: template
+    id: ivtLogtryck
+    lambda: "return {};"
+
+  - name: "ivt Semester aktiv"
+    platform: template
+    id: ivtSemesteraktiv
+    lambda: "return {};"
+
+  - name: "ivt Kompressor aktiv"
+    platform: template
+    id: ivtKompressoraktiv
+    lambda: "return {};"
+
+  - name: "ivt SV1 Öppna"
+    platform: template
+    id: ivtSV1Oppna
+    lambda: "return {};"
+
+  - name: "ivt SV1 Stäng"
+    platform: template
+    id: ivtSV1Stang
+    lambda: "return {};"
+
+  - name: "ivt P1 Rad"
+    platform: template
+    id: ivtP1Rad
+    lambda: "return {};"
+
+  - name: "ivt Fläkt"
+    platform: template
+    id: ivtFlakt
+    lambda: "return {};"
+
+  - name: "ivt Larm aktiv"
+    platform: template
+    id: ivtLarmaktiv
+    lambda: "return {};"
+
+  - name: "ivt Extern P2 "
+    platform: template
+    id: ivtExternP2
+    lambda: "return {};"
+
+  - name: "ivt LLT GT1 temp"
+    platform: template
+    id: ivtLLTGT1
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+
+  - name: "ivt LL GT1 temp"
+    platform: template
+    id: ivtLLGT1
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+
+  - name: "ivt BV GT1 temp"
+    platform: template
+    id: ivtBVGT1
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+
+  - name: "ivt UL GT1 temp"
+    platform: template
+    id: ivtULGT1
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+  - name: "ivt LLT GT3:2 temp"
+    platform: template
+    id: ivtLLGT3_2
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+    
+  - name: "ivt ULT GT3:2 temp"
+    platform: template
+    id: ivtULTGT3_2
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+
+  - name: "ivt UL GT3:2 temp"
+    platform: template
+    id: ivtULGT3_2
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+
+  - name: "ivt LL GT3:3 temp"
+    platform: template
+    id: ivtLLGT3_3
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+
+  - name: "ivt BV GT3:3 temp"
+    platform: template
+    id: ivtBVGT3_3
+    unit_of_measurement: "°C"
+    lambda: "return {};"
+
+  - name: "ivt SV3 BV Förskj"
+    platform: template
+    id: ivtSV3BVForskj
+    lambda: "return {};"
+
+  - name: "ivt Effekt ink vit VV behov"
+    platform: template
+    id: ivtEffektinkvitVVbehov
+    lambda: "return {};"
+
+  - name: "ivt  Tillskotstimer VV behov"
+    platform: template
+    id: ivtTillskotstimerVVbehov
+    lambda: "return {};"
+
+  - name: "ivt  Tappv prio"
+    platform: template
+    id: ivtTappvprio
+    lambda: "return {};"
+
+  - name: "ivt Tillskott i 10"
+    platform: template
+    id: ivtTillskotti10
+    lambda: "return {};"
+
+  - name: "ivt Tillskott RAD"
+    platform: template
+    id: ivtTillskottRAD
+    lambda: "return {};"
+
+  - name: "ivt Tillskott Tillägg"
+    platform: template
+    id: ivtTillskottTillagg
+    lambda: "return {};"
+
+  - name: "ivt Default SV2 Open"
+    platform: template
+    id: ivtDefaultSV2Open
+    lambda: "return {};"
+    
+#    auto my_Ivt495Twin = new Ivt495Twin(id(uart_bus),id(ivtFramledning),id(ivtUte),id(ivtTappvarmvattenTopp),id(ivtVarmvattenMitt),id(ivtVarmevattenBotten),id(ivtRumstemp),id(ivtHetgas),id(ivtExtraAccTank),id(ivtTryckvakt),id(ivtHogtryck),id(ivtLogtryck),id(ivtSemesteraktiv),id(ivtKompressoraktiv),id(ivtSV1Oppna),id(ivtSV1Stang),id(ivtP1Rad),id(ivtFlakt),id(ivtLarmaktiv),id(ivtExternP2),id(ivtLLTGT1),id(ivtLLGT1),id(ivtBVGT1),id(ivtULGT1),id(ivtLLGT3_2),id(ivtULTGT3_2),id(ivtULGT3_2),id(ivtLLGT3_3),id(ivtBVGT3_3),id(ivtSV3BVForskj),id(ivtEffektinkvitVVbehov),id(ivtTillskotstimerVVbehov),id(ivtTappvprio),id(ivtTillskotti10),id(ivtTillskottRAD),id(ivtTillskottTillagg),id(ivtDefaultSV2Open));
+#    auto my_Ivt495Twin = new Ivt495Twin(id(uart_bus));
+    
+custom_component:
+- lambda: |-
+    auto my_Ivt495Twin = new Ivt495Twin(id(uart_bus),id(ivtFramledning),id(ivtUte),id(ivtTappvarmvattenTopp),id(ivtVarmvattenMitt),id(ivtVarmevattenBotten),id(ivtRumstemp),id(ivtHetgas),id(ivtExtraAccTank),id(ivtTryckvakt),id(ivtHogtryck),id(ivtLogtryck),id(ivtSemesteraktiv),id(ivtKompressoraktiv),id(ivtSV1Oppna),id(ivtSV1Stang),id(ivtP1Rad),id(ivtFlakt),id(ivtLarmaktiv),id(ivtExternP2),id(ivtLLTGT1),id(ivtLLGT1),id(ivtBVGT1),id(ivtULGT1),id(ivtLLGT3_2),id(ivtULTGT3_2),id(ivtULGT3_2),id(ivtLLGT3_3),id(ivtBVGT3_3),id(ivtSV3BVForskj),id(ivtEffektinkvitVVbehov),id(ivtTillskotstimerVVbehov),id(ivtTappvprio),id(ivtTillskotti10),id(ivtTillskottRAD),id(ivtTillskottTillagg),id(ivtDefaultSV2Open));
+    App.register_component(my_Ivt495Twin);
+    return {my_Ivt495Twin};    
