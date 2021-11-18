@@ -243,9 +243,7 @@ sensor:
     platform: template
     id: ivtDefaultSV2Open
     lambda: "return {};"
-    
-#    auto my_Ivt495Twin = new Ivt495Twin(id(uart_bus),id(ivtFramledning),id(ivtUte),id(ivtTappvarmvattenTopp),id(ivtVarmvattenMitt),id(ivtVarmevattenBotten),id(ivtRumstemp),id(ivtHetgas),id(ivtExtraAccTank),id(ivtTryckvakt),id(ivtHogtryck),id(ivtLogtryck),id(ivtSemesteraktiv),id(ivtKompressoraktiv),id(ivtSV1Oppna),id(ivtSV1Stang),id(ivtP1Rad),id(ivtFlakt),id(ivtLarmaktiv),id(ivtExternP2),id(ivtLLTGT1),id(ivtLLGT1),id(ivtBVGT1),id(ivtULGT1),id(ivtLLGT3_2),id(ivtULTGT3_2),id(ivtULGT3_2),id(ivtLLGT3_3),id(ivtBVGT3_3),id(ivtSV3BVForskj),id(ivtEffektinkvitVVbehov),id(ivtTillskotstimerVVbehov),id(ivtTappvprio),id(ivtTillskotti10),id(ivtTillskottRAD),id(ivtTillskottTillagg),id(ivtDefaultSV2Open));
-#    auto my_Ivt495Twin = new Ivt495Twin(id(uart_bus));
+   
     
 custom_component:
 - lambda: |-
