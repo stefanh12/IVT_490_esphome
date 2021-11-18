@@ -8,3 +8,8 @@ The're are 36 different readings that come from the serial device, all is collec
 
 
 I've enabled debugging on UART so that you can check if your serial connection is working. 
+
+
+This code works on esphome 2021.11.1 and Home Assistant version supervisor-2021.10.8, core-2021.11.4, Home Assistant OS 6.6
+
+
