@@ -14,7 +14,7 @@ esphome:
 wifi:
   ssid: ${ssid}
   password: ${ssidpassword}
-#  use_address: sonoff_rf_bridge.local
+
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "ivt495"
