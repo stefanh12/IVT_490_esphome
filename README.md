@@ -1,5 +1,8 @@
 # IVT_490_esphome
 Serial connection to the IVT490 and IVT495Twin 
+I've used a D1 mini Pro, you should be able to use any esp8622 or esp32, just change the platform and the pin that you will use.
+
+I use the power from the Rego card, side contact,  to power the the D1 mini pro. 
 
 
 Since moving from MS code to use more of esphome I've converted the project to use esphome and native Home Assistant sensors instead of MQTT and compiled with MS code. 
@@ -10,6 +13,7 @@ The're are 36 different readings that come from the serial device, all is collec
 I've enabled debugging on UART so that you can check if your serial connection is working. 
 
 
-This code works on esphome 2021.11.1 and Home Assistant version supervisor-2021.10.8, core-2021.11.4, Home Assistant OS 6.6
+This code should work esphome  2022.12.3. Older and newer should also work.
+
 
 
